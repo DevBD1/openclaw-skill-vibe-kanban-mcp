@@ -5,6 +5,8 @@ description: Operate the local Vibe Kanban (vibe-kanban) instance through the `v
 
 # Vibe Kanban MCP
 
+Source repo: https://github.com/DevBD1/openclaw-skill-vibe-kanban-mcp
+
 ## Prereqs / setup check
 
 You need all three:
