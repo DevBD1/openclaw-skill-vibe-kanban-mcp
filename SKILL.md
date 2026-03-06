@@ -5,6 +5,38 @@ description: Operate the local Vibe Kanban (vibe-kanban) instance through the `v
 
 # Vibe Kanban MCP
 
+## Prereqs / setup check
+
+You need all three:
+
+1) **mcporter** installed and on PATH
+2) **vibe-kanban** installed and running locally (dashboard + MCP)
+3) An mcporter config entry named **`vibe_kanban`** (so `mcporter call vibe_kanban.*` works)
+
+Quick checks:
+
+```bash
+command -v mcporter
+mcporter config get vibe_kanban --json
+mcporter list vibe_kanban --schema
+```
+
+If `vibe_kanban` is missing, add it as a stdio server (example):
+
+```bash
+mcporter config add vibe_kanban --command npx --arg -y --arg vibe-kanban@latest --arg --mcp
+```
+
+If the dashboard is running but you don’t know the port(s):
+
+```bash
+ps aux | rg -i 'vibe[- ]kanban'
+/usr/sbin/lsof -nP -p <pid> -a -iTCP -sTCP:LISTEN
+```
+
+Notes:
+- `jq` is helpful for scripting (`jq -r .issue_id`) but not required.
+
 ## Quick start (mcporter)
 
 ```bash
